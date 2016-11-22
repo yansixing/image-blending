@@ -56,7 +56,7 @@ backData = deleteBackPixel(back_L,224)
 back_RGBA.putdata(backData)
 back_RGBA.save("images/img2.png")
 
-img = Image.blend(front_RGBA,back_RGBA,0.2)
+img = Image.blend(front_RGBA,back_RGBA,0.1)
 img.save("images/img3.png")
 # if __name__ == '__main__':
 
