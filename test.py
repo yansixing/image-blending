@@ -3,4 +3,4 @@
 
 #front = Image.open("images/almost-perfect.png")
 
-#print front.mode
+print front.mode
