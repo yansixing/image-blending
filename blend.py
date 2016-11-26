@@ -83,5 +83,5 @@ front_RGBA.save("images/img3.png")
 # img = Image.blend(front_RGBA,back_RGBA,0.2)
 # img.save("images/img3.png")
 
-print("\nsuccess.\n")
+#print("\nsuccess.\n")
 # if __name__ == '__main__':
