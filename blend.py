@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 from PIL import Image
+
+
 
 
 
@@ -11,8 +14,8 @@ back = Image.open("images/back.jpg")
 front_L = front.convert('L')
 back_L = back.convert('L')
 
-# front_L.save("images/front_L.png")
-# back_L.save("images/back_L.png")
+front_L.save("images/front_L.png")
+back_L.save("images/back_L.png")
 
 #get image size
 # width = front_L.size[0]
@@ -36,38 +39,44 @@ def deleteFrontPixel(data,threshold):
 		if item > threshold:
 			newData.append((255,255,255,0))
 		else:
-			newData.append((0,0,0,255))
+			newData.append((item,item,item,255))
 	return newData
 
 def deleteBackPixel(data,threshold):
 	newData = []
 	for item in data:
-		if item < threshold:
-			newData.append((255,255,255,0))
-		else:
-			newData.append((255,255,255,255))
+		# if item < threshold:
+		# 	newData.append((0,0,0,0))
+		# else:
+		newData.append((item,item,item,255))
 	return newData
 
 def imageBlending(front,back):
 	newData = []
 	for index,item in enumerate(front):
-		if front[index] == (255,255,255,0) and back[index] == (255,255,255,0):
-			newData.append((255,255,255,0))
-		if front[index] != (255,255,255,0) and back[index] == (255,255,255,0):
-			newData.append((0,0,0,128))
-		if front[index] == (255,255,255,0) and back[index] != (255,255,255,0):
-			newData.append((255,255,255,128))
-		if front[index] != (255,255,255,0) and back[index] != (255,255,255,0):
-			newData.append((128,128,128,255))
+		# if front[index] == (255,255,255,0) and back[index] == (255,255,255,0):
+		# 	newData.append((255,255,255,0))
+		# if front[index] != (255,255,255,0) and back[index] == (255,255,255,0):
+		# 	newData.append((0,0,0,128))
+		# if front[index] == (255,255,255,0) and back[index] != (255,255,255,0):
+		# 	newData.append((255,255,255,128))
+		# if front[index] != (255,255,255,0) and back[index] != (255,255,255,0):
+		# 	newData.append((128,128,128,255))
+		frontG = front[index][0]
+		backG = back[index][0]
+		dstAlpha = round(1 - (frontG - backG)/256, 3)
+		dstRGB = int(backG/dstAlpha)
+		dstAlpha = 256-(frontG - backG)
+		newData.append((dstRGB,dstRGB,dstRGB,dstAlpha))
 	return newData
 
 
 
-frontData = deleteFrontPixel(front_L,200)
+frontData = deleteFrontPixel(front_L,224)
 front_RGBA.putdata(frontData)
 front_RGBA.save("images/img.png")
 
-backData = deleteBackPixel(back_L,200)
+backData = deleteBackPixel(back_L,224)
 back_RGBA.putdata(backData)
 back_RGBA.save("images/img2.png")
 
@@ -83,5 +92,5 @@ front_RGBA.save("images/img3.png")
 # img = Image.blend(front_RGBA,back_RGBA,0.2)
 # img.save("images/img3.png")
 
-#print("\nsuccess.\n")
+print("\nsuccess.\n")
 # if __name__ == '__main__':
