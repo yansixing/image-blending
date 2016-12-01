@@ -2,10 +2,6 @@
 from __future__ import division
 from PIL import Image
 
-
-
-
-
 #Input two images
 front = Image.open("images/front.jpg")
 back = Image.open("images/back.jpg")
@@ -21,15 +17,9 @@ back_L.save("images/back_L.png")
 # width = front_L.size[0]
 # height = front_L.size[1]
 
-
-#Allocate memory for images
-# front_px = front_L.load()
-# back_px = back_L.load()
-
 front_RGBA = front.convert('RGBA')
 back_RGBA = back.convert('RGBA')
 
-# datas_RGBA = front_RGBA.getdata()
 front_L = front_L.getdata()
 back_L = back_L.getdata()
 
@@ -45,28 +35,17 @@ def deleteFrontPixel(data,threshold):
 def deleteBackPixel(data,threshold):
 	newData = []
 	for item in data:
-		# if item < threshold:
-		# 	newData.append((0,0,0,0))
-		# else:
 		newData.append((item,item,item,255))
 	return newData
 
 def imageBlending(front,back):
 	newData = []
 	for index,item in enumerate(front):
-		# if front[index] == (255,255,255,0) and back[index] == (255,255,255,0):
-		# 	newData.append((255,255,255,0))
-		# if front[index] != (255,255,255,0) and back[index] == (255,255,255,0):
-		# 	newData.append((0,0,0,128))
-		# if front[index] == (255,255,255,0) and back[index] != (255,255,255,0):
-		# 	newData.append((255,255,255,128))
-		# if front[index] != (255,255,255,0) and back[index] != (255,255,255,0):
-		# 	newData.append((128,128,128,255))
 		frontG = front[index][0]
 		backG = back[index][0]
 		dstAlpha = round(1 - (frontG - backG)/256, 3)
 		dstRGB = int(backG/dstAlpha)
-		dstAlpha = 256-(frontG - backG)
+		dstAlpha = 255-(frontG - backG)
 		newData.append((dstRGB,dstRGB,dstRGB,dstAlpha))
 	return newData
 
@@ -79,7 +58,6 @@ front_RGBA.save("images/img.png")
 backData = deleteBackPixel(back_L,224)
 back_RGBA.putdata(backData)
 back_RGBA.save("images/img2.png")
-
 
 front = front_RGBA.getdata()
 back = back_RGBA.getdata()
