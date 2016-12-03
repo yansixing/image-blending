@@ -3,8 +3,8 @@ from __future__ import division
 from PIL import Image
 
 #Input two images
-front = Image.open("images/front.jpg")
-back = Image.open("images/back.jpg")
+front = Image.open("images/bright.png")
+back = Image.open("images/dusk.png")
 
 #convert the image to black and white
 front_L = front.convert('L')
