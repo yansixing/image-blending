@@ -1,9 +1,22 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 from PIL import Image
+from PIL import ImageEnhance
+
+
+def brightnessHandle():
+	back = Image.open("images/back.jpg")
+	brightness = ImageEnhance.Brightness(back)
+	brightValue = input("输入亮度值（0.1～1.0）：")
+	bright_img = brightness.enhance(brightValue)
+	bright_img.save("images/dusk.png")
+
+brightnessHandle()
 
 #Input two images
 front = Image.open("images/bright.png")
 back = Image.open("images/dusk.png")
+
 #covert to 'L' mode
 front_L = front.convert('L')
 back_L = back.convert('L')
@@ -14,6 +27,7 @@ back_RGBA = back.convert('RGBA')
 front_L = front_L.getdata()
 back_L = back_L.getdata()
 
+#frontHandle函数将front layer中大于阀值的转换成白色透明像素，小于阀值的转为RGBA模式，这两个handle函数主要作用为将灰度模式转为RGBA模式
 def frontHandle(data,threshold):
 	newData = []
 	for item in data:
@@ -23,7 +37,7 @@ def frontHandle(data,threshold):
 			newData.append((item,item,item,255))
 	return newData
 
-def backHandle(data,threshold):
+def backHandle(data):
 	newData = []
 	for item in data:
 		newData.append((item,item,item,255))
@@ -32,7 +46,7 @@ def backHandle(data,threshold):
 def imageBlending(front,back):
 	newData = []
 	for index,item in enumerate(front):
-		#core part⬇️
+		#core code！⬇️
 		frontG = front[index][0]
 		backG = back[index][0]
 		dstAlpha = round(1 - (frontG - backG)/256, 3)
@@ -41,11 +55,12 @@ def imageBlending(front,back):
 		newData.append((dstRGB,dstRGB,dstRGB,dstAlpha))
 	return newData
 
-frontData = frontHandle(front_L,224)
+threshold = input("请输入阀值（128～255）：")
+frontData = frontHandle(front_L,threshold)
 front_RGBA.putdata(frontData)
 front_RGBA.save("images/img.png")
 
-backData = backHandle(back_L,160)
+backData = backHandle(back_L)
 back_RGBA.putdata(backData)
 back_RGBA.save("images/img2.png")
 
