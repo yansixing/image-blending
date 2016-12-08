@@ -71,4 +71,4 @@ front_RGBA.putdata(img)
 front_RGBA.save("images/img3.png")
 
 
-print("success.\n")
+#print("success.\n")
