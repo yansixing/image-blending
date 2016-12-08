@@ -5,7 +5,7 @@ from PIL import ImageEnhance
 
 
 def brightnessHandle():
-	back = Image.open("images/back.jpg")
+	back = Image.open("images/back01.jpg")
 	brightness = ImageEnhance.Brightness(back)
 	brightValue = input("输入亮度值（0.1～1.0）：")
 	bright_img = brightness.enhance(brightValue)
@@ -14,7 +14,7 @@ def brightnessHandle():
 brightnessHandle()
 
 #Input two images
-front = Image.open("images/bright.png")
+front = Image.open("images/front01.png")
 back = Image.open("images/dusk.png")
 
 #covert to 'L' mode
@@ -72,4 +72,3 @@ front_RGBA.save("images/img3.png")
 
 
 print("success.\n")
-# if __name__ == '__main__':
