@@ -4,3 +4,5 @@ Mix two images into a magical effect! <br /><br />
 <br />
 wiki:<a href="https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending">Alpha_blending</a><br /><br />
 Thanks to <a href = "https://blog.0xbbc.com/2016/09/magic-image-alpha-channel/">0xBBC</a>.
+
+<img src="https://github.com/yansixing/image-blending/blob/master/img3.png">
