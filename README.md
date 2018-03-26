@@ -6,4 +6,3 @@ wiki:<a href="https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending">Al
 Thanks to <a href = "https://blog.0xbbc.com/2016/09/magic-image-alpha-channel/">0xBBC</a>.
 
 <img src="https://github.com/yansixing/image-blending/blob/master/img3.png" width="400px" height="300px">
-<img src="https://github.com/yansixing/image-blending/blob/master/img3.png" width="400px" height="300px">
