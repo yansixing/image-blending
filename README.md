@@ -8,3 +8,5 @@ Thanks to <a href = "https://blog.0xbbc.com/2016/09/magic-image-alpha-channel/">
 ⬇️点击图片进入沉浸模式。（Github默认的背景色是#0e0e0e，改成#000效果更好）
 
 <img src="https://github.com/yansixing/image-blending/blob/master/0.3.png?raw=true" width="400px" height="300px">
+<br />
+<img src="https://github.com/yansixing/image-blending/blob/master/almost-perfect.png?raw=true" width="400px" height="300px">
