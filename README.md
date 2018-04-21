@@ -1,5 +1,8 @@
 # image-blending
 
+![](https://img.shields.io/badge/python-2.7-blue.svg)
+![npm](https://img.shields.io/npm/l/express.svg)
+
 
 Mix two images into a magical effect!
 
@@ -12,4 +15,4 @@ Thanks to <a href = "https://blog.0xbbc.com/2016/09/magic-image-alpha-channel/">
 
 <img src="https://github.com/yansixing/image-blending/blob/master/0.3.png?raw=true" width="400px" height="300px">
 <br />
-<img src="https://github.com/yansixing/image-blending/blob/master/almost-perfect.png?raw=true" width="740px" height="1024px">
+<img src="https://github.com/yansixing/image-blending/blob/master/almost-perfect.png?raw=true" width="379px" height="512px">
